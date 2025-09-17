@@ -3,26 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>钱包连接登录 - v1.02</title>
-    <link rel="stylesheet" href="style.css?v=1.02">
+    <title>RongChain DApp</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>欢迎登录 - v1.02</h1>
-        <button id="connectWalletBtn" class="btn">连接钱包</button>
-        <p id="walletAddress"></p>
-        <p id="networkWarning" style="color: red;"></p>
-
-        <!-- 新增部分：输入框显示邀请人地址 -->
-        <div class="invite-container">
-            <label for="inviteAddress">邀请人地址：</label>
-            <input type="text" id="inviteAddress" class="invite-input" value="" readonly />
-        </div>
-
-        <p>当前版本号：v1.02</p> <!-- 显示当前版本号 -->
+        <!-- 欢迎文字修改为“欢迎使用 RongChain” -->
+        <h1>欢迎使用 RongChain</h1>
+        <button id="connectButton">连接钱包</button>
+        <input type="text" id="inviterAddress" readonly placeholder="邀请人地址" />
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/ethers@5.4.4/dist/ethers.umd.min.js"></script>
-    <script src="app.js?v=1.02"></script>
+    <script src="app.js"></script>
 </body>
 </html>

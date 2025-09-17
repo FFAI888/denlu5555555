@@ -1,0 +1,60 @@
+/* styles.css - v1.01 */
+:root{
+  --bg:#f6f8fb;
+  --card:#ffffff;
+  --accent:#2b6cb0;
+  --muted:#6b7280;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:#111827;
+  -webkit-font-smoothing:antialiased;
+}
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 24px;
+  background:linear-gradient(90deg,#eef2ff,#ffffff);
+  border-bottom:1px solid #e6e6e6;
+}
+.topbar h1{font-size:18px; margin:0}
+.version{font-size:13px; color:var(--muted)}
+
+.container{
+  display:flex;
+  justify-content:center;
+  padding:36px 16px;
+}
+.card{
+  width:100%;
+  max-width:540px;
+  background:var(--card);
+  border-radius:10px;
+  padding:22px;
+  box-shadow:0 6px 20px rgba(16,24,40,0.06);
+}
+.controls{display:flex; gap:12px; margin:12px 0}
+button{
+  padding:10px 14px;
+  border-radius:8px;
+  border:1px solid rgba(0,0,0,0.06);
+  background:#fff;
+  cursor:pointer;
+  font-weight:600;
+}
+button:disabled{opacity:.5; cursor:not-allowed}
+#connectBtn{background:linear-gradient(180deg,#4f46e5,#4338ca); color:#fff; border:none}
+.notice{
+  margin-top:14px;
+  padding:10px;
+  border-radius:8px;
+  background:#fff7ed;
+  color:#92400e;
+  display:none;
+}
+.info p{margin:6px 0; color:var(--muted)}
+#status{font-weight:700}

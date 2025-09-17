@@ -56,8 +56,18 @@ document.getElementById('connectWalletBtn').addEventListener('click', async () =
             console.log(`连接成功，钱包地址是: ${userAddress}`);
         }
 
+        // 自动识别并显示邀请人地址
+        const inviteAddress = getInviteAddress(); // 模拟获取邀请人地址的函数
+        document.getElementById('inviteAddress').value = inviteAddress;
+        
     } catch (error) {
         console.error('用户拒绝连接钱包或出现错误:', error);
         alert('连接钱包失败，请重试');
     }
 });
+
+// 模拟获取邀请人地址的函数（可以根据实际情况替换为真实的逻辑）
+function getInviteAddress() {
+    // 假设通过某种方式（如URL参数、API请求等）获取邀请人地址
+    return "0x1234567890abcdef1234567890abcdef12345678"; // 这是一个示例地址
+}

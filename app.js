@@ -1,73 +1,28 @@
-// 确保页面加载时检查是否有以太坊钱包
-window.addEventListener('load', function() {
-    // 检查是否安装了MetaMask
-    if (typeof window.ethereum !== 'undefined') {
-        console.log('MetaMask is installed!');
-    } else {
-        alert('请安装MetaMask或其他以太坊钱包插件');
-    }
-});
+// 引入 ethers.js 库
+const { ethers } = require("ethers");
 
-// BSC 网络信息
-const bscNetwork = {
-    chainId: '0x38', // BSC 网络的 chainId 为 0x38（十六进制）
-    chainName: 'Binance Smart Chain',
-    rpcUrls: ['https://bsc-dataseed.binance.org/'],
-    nativeCurrency: {
-        name: 'Binance Coin',
-        symbol: 'BNB',
-        decimals: 18
-    },
-    blockExplorerUrls: ['https://bscscan.com']
-};
-
-// 连接钱包功能
-document.getElementById('connectWalletBtn').addEventListener('click', async () => {
-    // 尝试请求用户连接钱包
-    try {
-        // 请求连接钱包并获取用户账户
-        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-        const userAddress = accounts[0];
-        
-        // 获取当前网络
-        const network = await ethereum.request({ method: 'eth_chainId' });
-
-        // 检查当前网络是否为BSC
-        if (network !== bscNetwork.chainId) {
-            // 网络不是BSC，要求用户切换到BSC网络
-            document.getElementById('networkWarning').innerText = '当前网络不是BSC，请切换到BSC网络';
+document.getElementById('connectButton').addEventListener('click', async () => {
+    // 检查是否有钱包连接（如MetaMask）
+    if (window.ethereum) {
+        try {
+            // 请求连接钱包
+            await window.ethereum.request({ method: 'eth_requestAccounts' });
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner();
             
-            // 提示用户切换网络
-            try {
-                await ethereum.request({
-                    method: 'wallet_switchEthereumChain',
-                    params: [{ chainId: bscNetwork.chainId }],
-                });
-                // 切换成功后显示钱包地址
-                document.getElementById('walletAddress').innerText = `已连接钱包地址: ${userAddress}`;
-                console.log(`连接成功，钱包地址是: ${userAddress}`);
-            } catch (error) {
-                console.error('切换网络失败:', error);
-                alert('无法切换到BSC网络，请手动切换');
-            }
-        } else {
-            // 如果是BSC链，显示钱包地址
-            document.getElementById('walletAddress').innerText = `已连接钱包地址: ${userAddress}`;
-            console.log(`连接成功，钱包地址是: ${userAddress}`);
-        }
+            // 获取钱包地址
+            const walletAddress = await signer.getAddress();
+            console.log("钱包地址：", walletAddress);
 
-        // 自动识别并显示邀请人地址
-        const inviteAddress = getInviteAddress(); // 模拟获取邀请人地址的函数
-        document.getElementById('inviteAddress').value = inviteAddress;
-        
-    } catch (error) {
-        console.error('用户拒绝连接钱包或出现错误:', error);
-        alert('连接钱包失败，请重试');
+            // 设置邀请人地址（假设从 URL 参数中获取）
+            const urlParams = new URLSearchParams(window.location.search);
+            const inviterAddress = urlParams.get('inviter') || '没有邀请人地址';
+            document.getElementById('inviterAddress').value = inviterAddress;
+
+        } catch (error) {
+            console.error("连接钱包失败：", error);
+        }
+    } else {
+        alert("请安装 MetaMask 或其他支持的以太坊钱包！");
     }
 });
-
-// 模拟获取邀请人地址的函数（可以根据实际情况替换为真实的逻辑）
-function getInviteAddress() {
-    // 假设通过某种方式（如URL参数、API请求等）获取邀请人地址
-    return "0x1234567890abcdef1234567890abcdef12345678"; // 这是一个示例地址
-}

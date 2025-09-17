@@ -1,73 +1,30 @@
+/* 样式不变 */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+    text-align: center;
+    padding: 20px;
 }
 
 .container {
-    text-align: center;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
 }
 
-h1 {
-    margin-bottom: 20px;
-}
-
-.btn {
-    padding: 15px 30px;
-    background-color: #007bff;
+button {
+    background-color: #4CAF50;
     color: white;
-    font-size: 16px;
     border: none;
-    border-radius: 5px;
+    padding: 10px 20px;
     cursor: pointer;
 }
 
-.btn:hover {
-    background-color: #0056b3;
+button:hover {
+    background-color: #45a049;
 }
 
-#walletAddress {
+input {
     margin-top: 20px;
-    font-size: 16px;
-    color: #333;
-}
-
-#networkWarning {
-    margin-top: 10px;
-    font-size: 14px;
-}
-
-p {
-    font-size: 16px;
-}
-
-.invite-container {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.invite-container label {
-    font-size: 16px;
-    margin-right: 10px;
-}
-
-.invite-input {
     padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 60%;
-    background-color: #f9f9f9;
-    cursor: not-allowed; /* 禁止点击 */
-    pointer-events: none; /* 禁止操作 */
+    width: 100%;
+    box-sizing: border-box;
 }

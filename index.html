@@ -1,20 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- index.html - v1.01 -->
+<!doctype html>
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RongChain DApp</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>连接钱包（仅支持 BSC） - v1.01</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="container">
-        <!-- 欢迎文字修改为“欢迎使用 RongChain” -->
-        <h1>欢迎使用 RongChain</h1>
-        <button id="connectButton">连接钱包</button>
-        <input type="text" id="inviterAddress" readonly placeholder="邀请人地址" />
-    </div>
+  <header class="topbar">
+    <h1>钱包连接页面（仅支持 BSC）</h1>
+    <div class="version">版本：v1.01</div>
+  </header>
 
-    <script src="https://cdn.jsdelivr.net/npm/ethers@5.4.4/dist/ethers.umd.min.js"></script>
-    <script src="app.js"></script>
+  <main class="container">
+    <div class="card">
+      <p id="status">状态：未连接</p>
+      <div class="controls">
+        <button id="connectBtn">连接钱包</button>
+        <button id="disconnectBtn" disabled>断开连接</button>
+      </div>
+
+      <div class="info">
+        <p><strong>地址：</strong><span id="address">—</span></p>
+        <p><strong>网络：</strong><span id="network">—</span></p>
+        <p><strong>链支持：</strong>仅支持 Binance Smart Chain 主网（Chain ID: 56）</p>
+      </div>
+
+      <div class="notice" id="notice"></div>
+    </div>
+  </main>
+
+  <!-- Ethers.js (用于与钱包交互) -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

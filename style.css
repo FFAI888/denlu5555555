@@ -48,3 +48,26 @@ h1 {
 p {
     font-size: 16px;
 }
+
+.invite-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.invite-container label {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.invite-input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 60%;
+    background-color: #f9f9f9;
+    cursor: not-allowed; /* 禁止点击 */
+    pointer-events: none; /* 禁止操作 */
+}

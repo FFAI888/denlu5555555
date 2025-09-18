@@ -3,11 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>确认关系</title>
-  <link rel="stylesheet" href="style.css?v=0.16">
+  <link rel="stylesheet" href="style.css?v=0.17">
   <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
-  <script src="script.js?v=0.16" defer></script>
+  <script src="script.js?v=0.17" defer></script>
 </head>
 <body>
+  <script>
+    // 登录验证
+    const inviterAddress = localStorage.getItem("inviterAddress");
+    if(!inviterAddress){
+      alert("请先登录！");
+      window.location.href="index.html";
+    }
+  </script>
+
   <div class="container">
     <h1>确认关系页面</h1>
     <p>请选择一个操作：</p>

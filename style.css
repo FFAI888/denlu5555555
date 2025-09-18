@@ -16,7 +16,7 @@ button {
   cursor: pointer;
 }
 
-/* 邀请人输入框样式 */
+/* 邀请人输入框 */
 .invite-box {
   margin-top: 20px;
   display: flex;
@@ -75,6 +75,28 @@ button {
   filter: brightness(1.3);
 }
 
+/* 三个叠加按钮 */
+.button-stack {
+  position: relative;
+  width: 200px;
+  height: 50px;
+  margin: 50px auto;
+}
+.button-stack button {
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  left: 0;
+  top: 0;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+#btnReceive { background-color: #28a745; }
+#btnSend    { background-color: #007bff; }
+#btnBind    { background-color: #fd7e14; }
+
 /* 提示消息 */
 #toastContainer {
   position: fixed;
@@ -95,7 +117,6 @@ button {
 .toast.success { background: rgba(0, 200, 100, 0.9); }
 .toast.error   { background: rgba(200, 0, 0, 0.9); }
 .toast.warning { background: rgba(255, 165, 0, 0.9); }
-.toast.info    { background: rgba(0, 0, 0, 0.8); }
 
 @keyframes slideIn {
   0% { opacity: 0; transform: translateX(-50%) translateY(-20px); }

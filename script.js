@@ -1,6 +1,6 @@
-// v0.26 - 主页动态模块加载 + 模拟接口数据 + 动画效果
+// v0.26 - 登录、邀请人绑定、主页动态模块加载 + 模拟接口数据 + 动画
 document.addEventListener("DOMContentLoaded",()=>{
-  // 原有登录与绑定逻辑保持 v0.25 完整
+  // 登录与绑定逻辑
   const inviterInput=document.getElementById("inviterInput");
   const inviterAddress=localStorage.getItem("inviterAddress")||"";
   if(inviterInput && inviterAddress) inviterInput.value=inviterAddress;
@@ -28,11 +28,10 @@ document.addEventListener("DOMContentLoaded",()=>{
     });
   }
 
-  // ---- 主页导航动态加载功能 + 模块动画 + 模拟接口数据 ----
+  // 主页导航动态加载 + 模块动画 + 模拟接口数据
   const navItems=document.querySelectorAll(".nav-item");
   const pageContent=document.getElementById("pageContent");
 
-  // 模拟接口数据
   const dataMap={
     0: {title:"首页", items:["最新活动1","最新活动2","热门新闻"]},
     1: {title:"拼团", items:["拼团商品A","拼团商品B","拼团商品C"]},
@@ -43,18 +42,15 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   navItems.forEach((item,index)=>{
     item.addEventListener("click",()=>{
-      // 高亮当前按钮
       navItems.forEach(i=>i.classList.remove("active"));
       item.classList.add("active");
 
-      // 模块内容动画切换
       if(pageContent){
         pageContent.classList.remove("active");
         pageContent.classList.add("fade-in");
         pageContent.style.opacity = 0;
         pageContent.style.transform = "translateY(20px)";
         setTimeout(()=>{
-          // 动态生成模块内容
           const data=dataMap[index];
           let html=`<h2>${data.title}</h2><ul>`;
           data.items.forEach(it=>html+=`<li>${it}</li>`);
@@ -68,6 +64,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     });
   });
 
-  // 默认加载首页内容
+  // 默认加载首页
   navItems[0].click();
 });

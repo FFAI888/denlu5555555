@@ -1,12 +1,18 @@
-// v0.26 - 登录、邀请人绑定、主页动态模块加载 + 模拟接口数据 + 动画
+// v0.27 - 登录、邀请人绑定、主页动态模块加载 + 模拟接口数据 + 动画
 document.addEventListener("DOMContentLoaded",()=>{
-  // 登录与绑定逻辑
+  // 登录按钮绑定
+  const connectButton=document.getElementById("connectButton");
+  if(connectButton){
+    connectButton.style.opacity="1";
+    connectButton.style.pointerEvents="auto";
+    connectButton.addEventListener("click", connectWallet);
+  }
+
+  // 邀请人绑定逻辑
   const inviterInput=document.getElementById("inviterInput");
   const inviterAddress=localStorage.getItem("inviterAddress")||"";
   if(inviterInput && inviterAddress) inviterInput.value=inviterAddress;
 
-  const connectButton=document.getElementById("connectButton");
-  if(connectButton) connectButton.addEventListener("click",connectWallet);
   setupSafetyCheck();
 
   const btnBind=document.getElementById("btnBind");
@@ -28,42 +34,37 @@ document.addEventListener("DOMContentLoaded",()=>{
     });
   }
 
-  // 主页导航动态加载 + 模块动画 + 模拟接口数据
+  // 主页动态模块加载 + 高亮导航 + 模块切换动画 + 模拟接口数据
   const navItems=document.querySelectorAll(".nav-item");
   const pageContent=document.getElementById("pageContent");
-
   const dataMap={
-    0: {title:"首页", items:["最新活动1","最新活动2","热门新闻"]},
-    1: {title:"拼团", items:["拼团商品A","拼团商品B","拼团商品C"]},
-    2: {title:"赚币", items:["赚币任务1","赚币任务2","赚币任务3"]},
-    3: {title:"兑换", items:["兑换商品X","兑换商品Y","兑换商品Z"]},
-    4: {title:"我的", items:["个人资料","我的邀请","设置"]}
+    0:{title:"首页", items:["最新活动1","最新活动2","热门新闻"]},
+    1:{title:"拼团", items:["拼团商品A","拼团商品B","拼团商品C"]},
+    2:{title:"赚币", items:["赚币任务1","赚币任务2","赚币任务3"]},
+    3:{title:"兑换", items:["兑换商品X","兑换商品Y","兑换商品Z"]},
+    4:{title:"我的", items:["个人资料","我的邀请","设置"]}
   };
-
   navItems.forEach((item,index)=>{
     item.addEventListener("click",()=>{
       navItems.forEach(i=>i.classList.remove("active"));
       item.classList.add("active");
-
       if(pageContent){
         pageContent.classList.remove("active");
         pageContent.classList.add("fade-in");
-        pageContent.style.opacity = 0;
-        pageContent.style.transform = "translateY(20px)";
+        pageContent.style.opacity=0;
+        pageContent.style.transform="translateY(20px)";
         setTimeout(()=>{
           const data=dataMap[index];
           let html=`<h2>${data.title}</h2><ul>`;
           data.items.forEach(it=>html+=`<li>${it}</li>`);
           html+="</ul>";
-          pageContent.innerHTML = html;
+          pageContent.innerHTML=html;
           pageContent.classList.add("active");
-          pageContent.style.opacity = 1;
-          pageContent.style.transform = "translateY(0)";
+          pageContent.style.opacity=1;
+          pageContent.style.transform="translateY(0)";
         },50);
       }
     });
   });
-
-  // 默认加载首页
-  navItems[0].click();
+  navItems[0].click(); // 默认加载首页
 });

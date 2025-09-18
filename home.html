@@ -3,14 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>主页 - DApp</title>
-  <link rel="stylesheet" href="style.css?v=0.15">
+  <link rel="stylesheet" href="style.css?v=0.17">
 </head>
 <body>
+  <script>
+    // 登录验证
+    const inviterAddress = localStorage.getItem("inviterAddress");
+    if(!inviterAddress){
+      alert("请先登录！");
+      window.location.href="index.html";
+    }
+  </script>
+
   <div class="container">
     <h1>主页</h1>
     <div id="pageContent">
       <p>首页内容区域</p>
     </div>
+
     <div id="myInviter" style="display:none; margin-top:20px;">
       <strong>邀请人地址:</strong>
       <input type="text" id="inviterDisplay" readonly>
@@ -40,6 +50,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=0.16" defer></script>
+  <script src="script.js?v=0.17" defer></script>
 </body>
 </html>

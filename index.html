@@ -1,38 +1,27 @@
-<!-- index.html - v1.01 -->
-<!doctype html>
-<html lang="zh-CN">
+<!DOCTYPE html>
+<html lang="zh">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>连接钱包（仅支持 BSC） - v1.01</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <title>登录页面 - DApp</title>
+  <link rel="stylesheet" href="style.css?v=0.04">
+  <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
+  <script src="script.js?v=0.04" defer></script>
 </head>
 <body>
-  <header class="topbar">
-    <h1>钱包连接页面（仅支持 BSC）</h1>
-    <div class="version">版本：v1.01</div>
-  </header>
+  <div class="container">
+    <h1>欢迎来到DApp</h1>
+    <button id="connectButton">连接钱包</button>
 
-  <main class="container">
-    <div class="card">
-      <p id="status">状态：未连接</p>
-      <div class="controls">
-        <button id="connectBtn">连接钱包</button>
-        <button id="disconnectBtn" disabled>断开连接</button>
-      </div>
-
-      <div class="info">
-        <p><strong>地址：</strong><span id="address">—</span></p>
-        <p><strong>网络：</strong><span id="network">—</span></p>
-        <p><strong>链支持：</strong>仅支持 Binance Smart Chain 主网（Chain ID: 56）</p>
-      </div>
-
-      <div class="notice" id="notice"></div>
+    <!-- 邀请人输入框 -->
+    <div class="invite-box">
+      <label for="inviterInput">邀请人:</label>
+      <input type="text" id="inviterInput" readonly>
     </div>
-  </main>
 
-  <!-- Ethers.js (用于与钱包交互) -->
-  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
-  <script src="app.js"></script>
+    <p id="status"></p>
+  </div>
+
+  <!-- 提示消息容器 -->
+  <div id="toastContainer"></div>
 </body>
 </html>

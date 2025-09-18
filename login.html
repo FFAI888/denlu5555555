@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登录页面</title>
+  <link rel="stylesheet" href="styles.css?v=1.04">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <div id="login-container">
+    <div class="card">
+      <h2>欢迎使用 RongChain</h2>
+      <button id="connect-wallet-btn"><span class="material-icons">link</span> 连接钱包</button>
+      <div id="inviter-info">
+        <label for="inviter-address">邀请人钱包地址</label>
+        <input type="text" id="inviter-address" readonly placeholder="请填写邀请人地址">
+      </div>
+      <p id="wallet-status">请连接钱包并选择 BSC 链</p>
+      <div id="message-box" class="hidden"><span class="material-icons" id="message-icon"></span> <span id="message-text"></span></div>
+    </div>
+  </div>
+  <script src="login.js?v=1.04"></script>
+</body>
+</html>

@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>主页 - DApp</title>
-  <link rel="stylesheet" href="style.css?v=0.17">
+  <link rel="stylesheet" href="style.css?v=0.19">
 </head>
 <body>
   <script>
-    // 登录验证
+    // 登录验证 + 邀请人地址验证
     const inviterAddress = localStorage.getItem("inviterAddress");
     if(!inviterAddress){
       alert("请先登录！");
@@ -50,6 +50,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=0.17" defer></script>
+  <script src="script.js?v=0.19" defer></script>
 </body>
 </html>

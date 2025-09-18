@@ -16,90 +16,50 @@ function showToast(message,type="info"){
   },3000);
 }
 
+// 登录钱包逻辑优化 v0.20
 async function connectWallet(){
   if(typeof window.ethereum==="undefined"){ showToast("请安装MetaMask!","error"); return;}
   try{
     const accounts=await ethereum.request({method:"eth_requestAccounts"});
     const account=accounts[0];
+
     const chainId=await ethereum.request({method:"eth_chainId"});
     if(chainId!=="0x38"){ showToast("请切换到BSC主网!","error"); return;}
+
     document.getElementById("status").innerText="连接成功: "+formatAddress(account);
     showToast("钱包连接成功","success");
+
     const inviterAddress=localStorage.getItem("inviterAddress");
-    if(inviterAddress){
+    if(!inviterAddress){
+      // 邀请人地址为空 → 进入确认关系页面绑定
+      setTimeout(()=>window.location.href="confirm.html",500);
+    } else{
+      // 已绑定邀请人 → 直接显示登录页面输入框并进入主页
       document.getElementById("inviterInput").value=inviterAddress;
       showToast("已绑定邀请人地址，直接跳转主页","warning");
       setTimeout(()=>window.location.href="home.html",1000);
-    } else setTimeout(()=>window.location.href="confirm.html",500);
+    }
   }catch(err){ showToast("连接失败: "+err.message,"error"); }
 }
 
-function setupSafetyCheck(){
-  if(typeof window.ethereum==="undefined") return;
-  ethereum.on("accountsChanged",()=>{
-    showToast("账户已切换，请重新登录！","warning");
-    localStorage.removeItem("inviterAddress");
-    setTimeout(()=>window.location.href="index.html",1000);
-  });
-  ethereum.on("chainChanged",()=>{
-    showToast("网络已切换，请重新登录！","warning");
-    localStorage.removeItem("inviterAddress");
-    setTimeout(()=>window.location.href="index.html",1000);
-  });
-  window.addEventListener("offline",()=>{
-    showToast("网络断开，请重新登录！","warning");
-    localStorage.removeItem("inviterAddress");
-    setTimeout(()=>window.location.href="index.html",1000);
-  });
-}
-
+// 确认关系页面绑定邀请人逻辑
 document.addEventListener("DOMContentLoaded",()=>{
-  const inviterAddress=localStorage.getItem("inviterAddress")||"";
   const inviterInput=document.getElementById("inviterInput");
-  const status=document.getElementById("status");
-  if(inviterInput) inviterInput.value=inviterAddress;
-  if(inviterAddress) showToast("已绑定邀请人地址: "+formatAddress(inviterAddress),"success");
-  else showToast("未绑定邀请人地址，请先绑定","warning");
+  const inviterAddress=localStorage.getItem("inviterAddress")||"";
+  if(inviterInput && inviterAddress) inviterInput.value=inviterAddress;
 
-  const connectButton=document.getElementById("connectButton");
-  if(connectButton) connectButton.addEventListener("click",connectWallet);
-  setupSafetyCheck();
-
-  const navItems=document.querySelectorAll(".nav-item");
-  const pageContent=document.getElementById("pageContent");
-  const myInviter=document.getElementById("myInviter");
-  const inviterDisplay=document.getElementById("inviterDisplay");
-  const contentArray=["首页内容区域","拼团内容区域","赚币内容区域","兑换内容区域","我的内容区域"];
-  navItems.forEach((item,index)=>{
-    item.addEventListener("click",()=>{
-      navItems.forEach(i=>i.classList.remove("active"));
-      item.classList.add("active");
-      if(index===4){
-        pageContent.innerHTML="<p>我的页面内容</p>";
-        if(inviterAddress){
-          myInviter.style.display="block";
-          inviterDisplay.value=formatAddress(inviterAddress);
-        } else myInviter.style.display="none";
-      } else{
-        pageContent.innerHTML=`<p>${contentArray[index]}</p>`;
-        myInviter.style.display="none";
-      }
-    });
-  });
-
-  const btnReceive=document.getElementById("btnReceive");
-  const btnSend=document.getElementById("btnSend");
   const btnBind=document.getElementById("btnBind");
-  if(btnReceive) btnReceive.addEventListener("click",()=>showToast("已点击确认接收","info"));
-  if(btnSend) btnSend.addEventListener("click",()=>showToast("已点击确认发送","info"));
-  if(btnBind) btnBind.addEventListener("click",async()=>{
-    if(typeof window.ethereum==="undefined"){ showToast("请安装MetaMask!","error"); return;}
-    try{
-      const accounts=await ethereum.request({method:"eth_requestAccounts"});
-      const account=accounts[0];
-      localStorage.setItem("inviterAddress",account);
-      showToast("绑定成功！即将跳转主页","success");
-      setTimeout(()=>window.location.href="home.html",1000);
-    }catch(err){ showToast("绑定失败: "+err.message,"error"); }
-  });
+  if(btnBind){
+    btnBind.addEventListener("click",async()=>{
+      if(typeof window.ethereum==="undefined"){ showToast("请安装MetaMask!","error"); return;}
+      try{
+        const accounts=await ethereum.request({method:"eth_requestAccounts"});
+        const account=accounts[0];
+        // 永久绑定邀请人地址
+        localStorage.setItem("inviterAddress",account);
+        showToast("绑定成功！返回登录页面显示","success");
+        setTimeout(()=>window.location.href="index.html",1000);
+      }catch(err){ showToast("绑定失败: "+err.message,"error");}
+    });
+  }
 });

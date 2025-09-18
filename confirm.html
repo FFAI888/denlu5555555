@@ -3,13 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>确认关系</title>
-  <link rel="stylesheet" href="style.css?v=0.12">
-  <script src="script.js?v=0.12" defer></script>
+  <link rel="stylesheet" href="style.css?v=0.16">
+  <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
+  <script src="script.js?v=0.16" defer></script>
 </head>
 <body>
   <div class="container">
     <h1>确认关系页面</h1>
-    <p>此页面暂不启用功能</p>
+    <p>请选择一个操作：</p>
+
+    <div class="button-stack">
+      <button id="btnReceive">确认接收</button>
+      <button id="btnSend">确认发送</button>
+      <button id="btnBind">确认绑定</button>
+    </div>
+
+    <div id="toastContainer"></div>
   </div>
 </body>
 </html>

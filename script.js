@@ -1,5 +1,13 @@
-// v0.27 - 登录、邀请人绑定、主页动态模块加载 + 模拟接口数据 + 动画
+// script.js - v0.28
+// v0.28 - 登录、邀请人绑定、主页动态模块加载 + 模拟接口数据 + 动画 + 显示版本号
 document.addEventListener("DOMContentLoaded",()=>{
+  const VERSION = "v0.28";
+
+  // 页面同步显示版本号
+  document.querySelectorAll('.version-display').forEach(el=>{
+    el.textContent = VERSION;
+  });
+
   // 登录按钮绑定
   const connectButton=document.getElementById("connectButton");
   if(connectButton){
@@ -38,33 +46,4 @@ document.addEventListener("DOMContentLoaded",()=>{
   const navItems=document.querySelectorAll(".nav-item");
   const pageContent=document.getElementById("pageContent");
   const dataMap={
-    0:{title:"首页", items:["最新活动1","最新活动2","热门新闻"]},
-    1:{title:"拼团", items:["拼团商品A","拼团商品B","拼团商品C"]},
-    2:{title:"赚币", items:["赚币任务1","赚币任务2","赚币任务3"]},
-    3:{title:"兑换", items:["兑换商品X","兑换商品Y","兑换商品Z"]},
-    4:{title:"我的", items:["个人资料","我的邀请","设置"]}
-  };
-  navItems.forEach((item,index)=>{
-    item.addEventListener("click",()=>{
-      navItems.forEach(i=>i.classList.remove("active"));
-      item.classList.add("active");
-      if(pageContent){
-        pageContent.classList.remove("active");
-        pageContent.classList.add("fade-in");
-        pageContent.style.opacity=0;
-        pageContent.style.transform="translateY(20px)";
-        setTimeout(()=>{
-          const data=dataMap[index];
-          let html=`<h2>${data.title}</h2><ul>`;
-          data.items.forEach(it=>html+=`<li>${it}</li>`);
-          html+="</ul>";
-          pageContent.innerHTML=html;
-          pageContent.classList.add("active");
-          pageContent.style.opacity=1;
-          pageContent.style.transform="translateY(0)";
-        },50);
-      }
-    });
-  });
-  navItems[0].click(); // 默认加载首页
-});
+    0

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>主页 - DApp</title>
-  <link rel="stylesheet" href="style.css?v=0.12">
+  <link rel="stylesheet" href="style.css?v=0.15">
 </head>
 <body>
   <div class="container">
@@ -11,9 +11,12 @@
     <div id="pageContent">
       <p>首页内容区域</p>
     </div>
+    <div id="myInviter" style="display:none; margin-top:20px;">
+      <strong>邀请人地址:</strong>
+      <input type="text" id="inviterDisplay" readonly>
+    </div>
   </div>
 
-  <!-- 底部导航栏 -->
   <div class="navbar">
     <div class="nav-item active" data-index="0">
       <img src="icons/home.png" alt="首页图标">
@@ -37,6 +40,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=0.12" defer></script>
+  <script src="script.js?v=0.16" defer></script>
 </body>
 </html>

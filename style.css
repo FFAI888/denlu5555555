@@ -1,4 +1,4 @@
-/* style.css - v0.36 */
+/* style.css - v0.37 */
 
 /* 全局布局 */
 html, body {
@@ -111,16 +111,3 @@ button.success-flash { animation:flashGreen 1s ease; }
   pointer-events:none;
   user-select:none;
 }
-
-/* 底部导航栏（保持不变） */
-.navbar {
-  position:fixed; bottom:0; left:0; right:0;
-  display:flex; justify-content:space-between;
-  background:#f1f1f1; border-top:1px solid #ccc;
-  padding:5px 0; max-width:480px; margin:0 auto; width:100%;
-}
-.nav-item { display:flex; flex-direction:column; align-items:center; justify-content:center; flex:1; font-size:12px; color:#333; cursor:pointer; padding:5px 0; box-sizing:border-box; }
-.nav-item img { width:24px; height:24px; margin-bottom:3px; pointer-events:none; user-select:none; }
-.nav-item span { display:block; }
-.nav-item.active { color:#007bff; }
-.nav-item.active img { filter: brightness(1.3); }

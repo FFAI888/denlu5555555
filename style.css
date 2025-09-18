@@ -1,0 +1,95 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin-top: 50px;
+  padding-bottom: 80px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #f1f1f1;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  border-top: 1px solid #ccc;
+}
+
+.navbar button {
+  flex: 1;
+  border: none;
+  background: none;
+  font-size: 14px;
+}
+
+/* 邀请人输入框样式 */
+.invite-box {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.invite-box label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+.invite-box input {
+  width: 300px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  pointer-events: none; /* 不可点击 */
+  user-select: none;   /* 不可复制 */
+}
+
+/* 三个叠加按钮 */
+.button-stack {
+  position: relative;
+  width: 200px;
+  margin: 0 auto;
+}
+.button-stack button {
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  left: 0;
+  top: 0;
+}
+#btnReceive { background: lightgreen; }
+#btnSend { background: lightblue; }
+#btnBind { background: orange; }
+
+/* 提示消息 */
+#toastContainer {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+}
+.toast {
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 8px 15px;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  animation: fadein 0.5s;
+}
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

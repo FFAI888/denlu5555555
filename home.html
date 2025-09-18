@@ -3,23 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RongChain 主页</title>
-  <link rel="stylesheet" href="style.css">
+  <title>主页</title>
+  <link rel="stylesheet" href="styles.css?v=1.04">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-  <div class="home-container">
-    <h1>欢迎来到 RongChain 主页</h1>
-
-    <!-- 导航栏 -->
-    <div class="nav-bar">
-      <button class="nav-btn">首页</button>
-      <button class="nav-btn">拼团</button>
-      <button class="nav-btn">赚币</button>
-      <button class="nav-btn">兑换</button>
-      <button class="nav-btn">我的</button>
+  <div id="home-container">
+    <h2>欢迎来到主页</h2>
+    <div id="nav-bar">
+      <button class="nav-btn" id="home-btn"><span class="material-icons">home</span><br>首页</button>
+      <button class="nav-btn" id="group-buy-btn"><span class="material-icons">shopping_cart</span><br>拼团</button>
+      <button class="nav-btn" id="earn-coin-btn"><span class="material-icons">paid</span><br>赚币</button>
+      <button class="nav-btn" id="exchange-btn"><span class="material-icons">swap_horiz</span><br>兑换</button>
+      <button class="nav-btn" id="my-btn"><span class="material-icons">account_circle</span><br>我的</button>
     </div>
   </div>
-
-  <script src="script.js"></script>
+  <script src="home.js?v=1.04"></script>
 </body>
 </html>

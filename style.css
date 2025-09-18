@@ -1,14 +1,15 @@
+/* style.css - v0.28 */
+
 /* 全局布局 */
 html, body { margin:0; padding:0; width:100%; height:100%; overflow-x:hidden; font-family:Arial, sans-serif; text-align:center; background:#fff; }
 .container { width:100%; max-width:480px; margin:0 auto; padding-bottom:100px; }
 .welcome-text { margin-top:50px; font-size:24px; font-weight:bold; }
+
+/* 中心区域 */
 .center-box { display:flex; flex-direction:column; align-items:center; justify-content:center; margin-top:30px; padding:0 10px; box-sizing:border-box; }
 
 /* 按钮 */
-button {
-  width:80%; max-width:300px; padding:12px 24px; font-size:16px; cursor:pointer; margin-bottom:20px; border-radius:6px;
-  opacity:1; pointer-events:auto; /* 确保亮色可点击 */
-}
+button { width:80%; max-width:300px; padding:12px 24px; font-size:16px; cursor:pointer; margin-bottom:20px; border-radius:6px; opacity:1; pointer-events:auto; }
 
 /* 邀请人输入框 */
 .invite-box { display:flex; justify-content:center; align-items:center; margin-bottom:10px; }

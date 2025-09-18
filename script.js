@@ -1,4 +1,4 @@
-// script.js - v0.37
+// script.js - v0.40
 
 window.onload = function() {
   const connectButton = document.getElementById("connectButton");
@@ -14,6 +14,9 @@ window.onload = function() {
   // 连接钱包按钮事件
   connectButton.addEventListener("click", function() {
     if (typeof window.ethereum !== "undefined") {
+      // 提示用户已安装钱包
+      console.log("MetaMask 或其他钱包插件已安装");
+
       const web3 = new Web3(window.ethereum);
 
       // 检查当前网络是否为BSC网络
@@ -43,6 +46,7 @@ window.onload = function() {
               window.location.href = "home.html";  // 跳转到主页页面
             })
             .catch((err) => {
+              console.error("连接钱包失败", err);
               alert("钱包连接失败，请重试！");
             });
         } else {
@@ -50,6 +54,7 @@ window.onload = function() {
         }
       });
     } else {
+      // 未安装钱包插件时提示用户
       alert("请安装 MetaMask 或其他支持的钱包插件！");
     }
   });
